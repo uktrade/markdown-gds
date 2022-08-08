@@ -9,6 +9,8 @@ Element = ElementTree.Element
 GDS_TAG_CLASS = {
     "p": "govuk-body",
     "a": "govuk-link",
+    "ul": "govuk-list govuk-list--bullet",
+    "ol": "govuk-list govuk-list--number",
 }
 
 
@@ -20,6 +22,10 @@ class GdsTreeprocessor(Treeprocessor):
                     el.set("class", GDS_TAG_CLASS["p"])
                 case Element(tag="a"):
                     el.set("class", GDS_TAG_CLASS["a"])
+                case Element(tag="ul"):
+                    el.set("class", GDS_TAG_CLASS["ul"])
+                case Element(tag="ol"):
+                    el.set("class", GDS_TAG_CLASS["ol"])
 
         return None
 
