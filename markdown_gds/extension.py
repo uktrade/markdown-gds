@@ -11,6 +11,9 @@ GDS_TAG_CLASS = {
     "a": "govuk-link",
     "ul": "govuk-list govuk-list--bullet",
     "ol": "govuk-list govuk-list--number",
+    "h1": "govuk-heading-l",
+    "h2": "govuk-heading-m",
+    "h3": "govuk-heading-s",
 }
 
 
@@ -26,6 +29,12 @@ class GdsTreeprocessor(Treeprocessor):
                     el.set("class", GDS_TAG_CLASS["ul"])
                 case Element(tag="ol"):
                     el.set("class", GDS_TAG_CLASS["ol"])
+                case Element(tag="h1"):
+                    el.set("class", GDS_TAG_CLASS["h1"])
+                case Element(tag="h2"):
+                    el.set("class", GDS_TAG_CLASS["h2"])
+                case Element(tag="h3"):
+                    el.set("class", GDS_TAG_CLASS["h3"])
 
         return None
 

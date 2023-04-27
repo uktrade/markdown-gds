@@ -9,10 +9,17 @@ from markdown_gds import GdsExtension
 @pytest.mark.parametrize(
     ["md", "expected"],
     [
+        # paragraph
+        (
+            "hello world",
+            '<p class="govuk-body">hello world</p>',
+        ),
+        # link
         (
             "[example](https://example.com)",
             '<p class="govuk-body"><a class="govuk-link" href="https://example.com">example</a></p>',
         ),
+        # unordered list
         (
             """
             - item 1
@@ -21,6 +28,7 @@ from markdown_gds import GdsExtension
             """,
             '<ul class="govuk-list govuk-list--bullet">\n<li>item 1</li>\n<li>item 2</li>\n<li>item 3</li>\n</ul>',
         ),
+        # ordered list
         (
             """
             1. item 1
@@ -28,6 +36,21 @@ from markdown_gds import GdsExtension
             3. item 3
             """,
             '<ol class="govuk-list govuk-list--number">\n<li>item 1</li>\n<li>item 2</li>\n<li>item 3</li>\n</ol>',
+        ),
+        # h1
+        (
+            "# hello world",
+            '<h1 class="govuk-heading-l">hello world</h1>',
+        ),
+        # h2
+        (
+            "## hello world",
+            '<h2 class="govuk-heading-m">hello world</h2>',
+        ),
+        # h3
+        (
+            "### hello world",
+            '<h3 class="govuk-heading-s">hello world</h3>',
         ),
     ],
 )
