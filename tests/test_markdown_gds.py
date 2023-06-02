@@ -56,3 +56,10 @@ from markdown_gds import GdsExtension
 )
 def test_gds_extention(md, expected):
     assert markdown.markdown(dedent(md), extensions=[GdsExtension()]) == expected
+
+
+def test_open_links_in_new_tab():
+    md = "[example](https://example.com)"
+    expected = '<p class="govuk-body"><a class="govuk-link" href="https://example.com" rel="noreferrer noopener" target="_blank">example</a></p>'
+    html = markdown.markdown(md, extensions=[GdsExtension(open_links_in_new_tab=True)])
+    assert html == expected
